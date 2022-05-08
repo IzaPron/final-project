@@ -12,6 +12,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println("Welcome in Final Project");
+
         int[] thousand = new int[1000];
         int[] oneHundredThousand = new int[100000];
         int[] million = new int[1000000];
@@ -24,12 +26,14 @@ public class Main {
         long[] sortTimeForOneHundredThousand = new long[4];
         long[] sortTimeForMillion = new long[4];
 
-        long starTime, endTime, resultTime;
+        long startTime, endTime, resultTime;
 
+        System.out.println("Fill 3 arrays with numbers...");
         fillTheArray(thousand);
         fillTheArray(oneHundredThousand);
         fillTheArray(million);
 
+        System.out.println("Computer is choosing random values from arrays...");
         int randomForThousand, randomForOneHundredThousand, randomForMillion;
         int randomValueForThousand, randomValueForOneHundredThousand, randomValueForMillion;
         randomForThousand = random.nextInt(999);
@@ -40,36 +44,48 @@ public class Main {
         randomValueForOneHundredThousand = oneHundredThousand[randomForOneHundredThousand];
         randomValueForMillion = million[randomForMillion];
 
+        String[] algorithmName = {"Insertion sort ", "Selection sort ", "Bubblesort"," Mergesort "};
+
+        System.out.println();
+        System.out.println("Sorting by 4 method array with 1000 elements...");
+        System.out.println();
         for (int i = 0; i < 4; i++) {
             copyOfThousand = thousand;
 
-            starTime = nanoTime();
+            startTime = nanoTime();
             sortByChoosenMethod(i, copyOfThousand);
             endTime = nanoTime();
-            resultTime = starTime - endTime;
+            resultTime = endTime - startTime;
             sortTimeForThousand[i] = resultTime;
-
+            System.out.println("Time of sort" + algorithmName[i] + "\n" + sortTimeForThousand[i] + " nano second." );
         }
 
+        System.out.println();
+        System.out.println("Sorting by 4 method array with 100 000 elements...");
+        System.out.println();
         for (int i = 0; i < 4; i++) {
             copyOfOneHundredThousand = oneHundredThousand;
 
-            starTime = nanoTime();
+            startTime = nanoTime();
             sortByChoosenMethod(i, copyOfOneHundredThousand);
             endTime = nanoTime();
-            resultTime = starTime - endTime;
+            resultTime = endTime - startTime;
             sortTimeForOneHundredThousand[i] = resultTime;
-
+            System.out.println("Time of sort" + algorithmName[i] + "\n" + sortTimeForOneHundredThousand[i] + " nano second." );
         }
 
+        System.out.println();
+        System.out.println("Sorting by 4 method array with 1 000 000 elements...");
+        System.out.println();
         for (int i = 0; i < 4; i++) {
             copyOfMillion = million;
 
-            starTime = nanoTime();
+            startTime = nanoTime();
             sortByChoosenMethod(i, copyOfMillion);
             endTime = nanoTime();
-            resultTime = starTime - endTime;
+            resultTime = endTime - startTime;
             sortTimeForMillion[i] = resultTime;
+            System.out.println("Time of sort" + algorithmName[i] + "\n" + sortTimeForMillion[i] + " nano second." );
         }
 
         long[] timeOfBinarySearch = new long[3];
@@ -77,68 +93,61 @@ public class Main {
         long fastestSortForOneHundred = minFromArray(sortTimeForOneHundredThousand);
         long fastestSortForMillion = minFromArray(sortTimeForMillion);
 
-        starTime = nanoTime();
+        startTime = nanoTime();
         int indexOfSearchValueForThousand = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
         endTime = nanoTime();
 
-        timeOfBinarySearch[0] = (starTime - endTime) + fastestSortForThousand;
+        timeOfBinarySearch[0] = (endTime - startTime) + fastestSortForThousand;
 
-        starTime = nanoTime();
+        startTime = nanoTime();
         int indexOfSearchValueForOneHundredThousand = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomForOneHundredThousand);
         endTime = nanoTime();
 
-        timeOfBinarySearch[1] = (starTime - endTime) + fastestSortForOneHundred;
+        timeOfBinarySearch[1] = (endTime - startTime) + fastestSortForOneHundred;
 
-        starTime = nanoTime();
+        startTime = nanoTime();
         int indexOfSearchValueForMillion = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomForMillion);
         endTime = nanoTime();
 
-        timeOfBinarySearch[2] = (starTime - endTime) + fastestSortForMillion;
+        timeOfBinarySearch[2] = (endTime - startTime) + fastestSortForMillion;
 
         long[] timeOfLinearSearch = new long[3];
         int[] linearSearch = new int[3];
 
-        starTime = nanoTime();
+        startTime = nanoTime();
         linearSearch[0] = linearSearch(thousand, randomValueForThousand);
         endTime = nanoTime();
 
-        timeOfLinearSearch[0] = starTime - endTime;
+        timeOfLinearSearch[0] = endTime - startTime;
 
-        starTime = nanoTime();
+        startTime = nanoTime();
         linearSearch[1] = linearSearch(oneHundredThousand, randomForOneHundredThousand);
         endTime = nanoTime();
 
-        timeOfLinearSearch[1] = starTime - endTime;
+        timeOfLinearSearch[1] = endTime - startTime;
 
 
-        starTime = nanoTime();
+        startTime = nanoTime();
         linearSearch[2] = linearSearch(million, randomForMillion);
         endTime = nanoTime();
 
-        timeOfLinearSearch[2] = starTime - endTime;
-        String[] algorithmName = {"Insertion sort ", "Selection sort ", "Bubblesor t"," Mergesort "};
+        timeOfLinearSearch[2] = endTime - startTime;
 
 
         System.out.println("For array with 1000 elemments");
-        for (int i = 0; i < 4; i++) {
-            System.out.println("Time of sort" + algorithmName[i] + sortTimeForThousand[i] + " nano second." );
-        }
+
         System.out.println("Binary search find random value in time " + timeOfBinarySearch[0]);
         System.out.println("Linear search find random value in time " + timeOfLinearSearch[0]);
 
 
         System.out.println("For array with 100  000 elemments");
-        for (int i = 0; i < 4; i++) {
-            System.out.println("Time of sort" + algorithmName[i] + sortTimeForOneHundredThousand[i] + " nano second." );
-        }
+
         System.out.println("Binary search find random value in time " + timeOfBinarySearch[1]);
         System.out.println("Linear search find random value in time " + timeOfLinearSearch[1]);
 
-        
+
         System.out.println("For array with 1 000 000 elemments");
-        for (int i = 0; i < 4; i++) {
-            System.out.println("Time of sort" + algorithmName[i] + sortTimeForMillion[i] + " nano second." );
-        }
+
         System.out.println("Binary search find random value in time " + timeOfBinarySearch[2]);
         System.out.println("Linear search find random value in time " + timeOfLinearSearch[2]);
 
