@@ -81,19 +81,19 @@ public class Main {
         int indexOfSearchValueForThousand = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
         endTime = nanoTime();
 
-        timeOfBinarySearch[0] = (starTime - endTime) + ;
+        timeOfBinarySearch[0] = (starTime - endTime) + fastestSortForThousand;
 
         starTime = nanoTime();
-        int indexOfSearchValueForOneHundredThousand = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
+        int indexOfSearchValueForOneHundredThousand = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomForOneHundredThousand);
         endTime = nanoTime();
 
-        timeOfBinarySearch[1] = starTime - endTime;
+        timeOfBinarySearch[1] = (starTime - endTime) + fastestSortForOneHundred;
 
         starTime = nanoTime();
-        int indexOfSearchValueForMillion = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
+        int indexOfSearchValueForMillion = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomForMillion);
         endTime = nanoTime();
 
-        timeOfBinarySearch[2] = (starTime - endTime) ;
+        timeOfBinarySearch[2] = (starTime - endTime) + fastestSortForMillion;
 
 
 
