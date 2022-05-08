@@ -73,12 +73,15 @@ public class Main {
         }
 
         long[] timeOfBinarySearch = new long[3];
+        long fastestSortForThousand = minFromArray(sortTimeForThousand);
+        long fastestSortForOneHundred = minFromArray(sortTimeForOneHundredThousand);
+        long fastestSortForMillion = minFromArray(sortTimeForMillion);
 
         starTime = nanoTime();
         int indexOfSearchValueForThousand = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
         endTime = nanoTime();
 
-        timeOfBinarySearch[0] = starTime - endTime;
+        timeOfBinarySearch[0] = (starTime - endTime) + ;
 
         starTime = nanoTime();
         int indexOfSearchValueForOneHundredThousand = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
@@ -90,8 +93,10 @@ public class Main {
         int indexOfSearchValueForMillion = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
         endTime = nanoTime();
 
+        timeOfBinarySearch[2] = (starTime - endTime) ;
 
-        timeOfBinarySearch[2] = starTime - endTime;
+
+
     }
 
     public static int factoryOfNumbers() {
@@ -140,5 +145,15 @@ public class Main {
         }
     }
 
+    public static long minFromArray(long[] array){
+        long min = array[0];
 
+        for (int i = 1; i < array.length; i++) {
+            if( array[i] < min){
+                min = array[i];
+            }
+        }
+
+        return  min;
+    }
 }
