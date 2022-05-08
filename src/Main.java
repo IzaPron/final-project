@@ -2,6 +2,7 @@ import java.util.*;
 
 import static java.lang.System.nanoTime;
 
+
 public class Main {
 
     public static Random random = new Random();
@@ -30,7 +31,7 @@ public class Main {
         fillTheArray(million);
 
         int randomForThousand, randomForOneHundredThousand, randomForMillion;
-        int  randomValueForThousand, randomValueForOneHundredThousand, randomValueForMillion;
+        int randomValueForThousand, randomValueForOneHundredThousand, randomValueForMillion;
         randomForThousand = random.nextInt(999);
         randomForOneHundredThousand = random.nextInt(99999);
         randomForMillion = random.nextInt(999999);
@@ -62,7 +63,7 @@ public class Main {
         }
 
         for (int i = 0; i < 4; i++) {
-            copyOfMillion = copyOfMillion;
+            copyOfMillion = million;
 
             starTime = nanoTime();
             sortByChoosenMethod(i, copyOfMillion);
@@ -71,7 +72,26 @@ public class Main {
             sortTimeForMillion[i] = resultTime;
         }
 
+        long[] timeOfBinarySearch = new long[3];
 
+        starTime = nanoTime();
+        int indexOfSearchValueForThousand = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
+        endTime = nanoTime();
+
+        timeOfBinarySearch[0] = starTime - endTime;
+
+        starTime = nanoTime();
+        int indexOfSearchValueForOneHundredThousand = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
+        endTime = nanoTime();
+
+        timeOfBinarySearch[1] = starTime - endTime;
+
+        starTime = nanoTime();
+        int indexOfSearchValueForMillion = binarySearch.binarySearch(thousand, 0, thousand.length - 1, randomValueForThousand);
+        endTime = nanoTime();
+
+
+        timeOfBinarySearch[2] = starTime - endTime;
     }
 
     public static int factoryOfNumbers() {
