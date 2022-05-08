@@ -95,6 +95,28 @@ public class Main {
 
         timeOfBinarySearch[2] = (starTime - endTime) + fastestSortForMillion;
 
+        long[] timeOfLinearSearch = new long[3];
+        int[] linearSearch = new int[3];
+
+        starTime = nanoTime();
+        linearSearch[0] = linearSearch(thousand, randomValueForThousand);
+        endTime = nanoTime();
+
+        timeOfLinearSearch[0] = starTime - endTime;
+
+        starTime = nanoTime();
+        linearSearch[1] = linearSearch(oneHundredThousand, randomForOneHundredThousand);
+        endTime = nanoTime();
+
+        timeOfLinearSearch[1] = starTime - endTime;
+
+
+        starTime = nanoTime();
+        linearSearch[2] = linearSearch(million, randomForMillion);
+        endTime = nanoTime();
+
+        timeOfLinearSearch[2] = starTime - endTime;
+
 
 
     }
@@ -155,5 +177,17 @@ public class Main {
         }
 
         return  min;
+    }
+
+    public static int linearSearch(int[] array, int valueToFind){
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == valueToFind){
+                return i;
+            }
+        }
+
+        return -1;
+
     }
 }
