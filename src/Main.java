@@ -116,8 +116,31 @@ public class Main {
         endTime = nanoTime();
 
         timeOfLinearSearch[2] = starTime - endTime;
+        String[] algorithmName = {"Insertion sort ", "Selection sort ", "Bubblesor t"," Mergesort "};
 
 
+        System.out.println("For array with 1000 elemments");
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Time of sort" + algorithmName[i] + sortTimeForThousand[i] + " nano second." );
+        }
+        System.out.println("Binary search find random value in time " + timeOfBinarySearch[0]);
+        System.out.println("Linear search find random value in time " + timeOfLinearSearch[0]);
+
+
+        System.out.println("For array with 100  000 elemments");
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Time of sort" + algorithmName[i] + sortTimeForOneHundredThousand[i] + " nano second." );
+        }
+        System.out.println("Binary search find random value in time " + timeOfBinarySearch[1]);
+        System.out.println("Linear search find random value in time " + timeOfLinearSearch[1]);
+
+        
+        System.out.println("For array with 1 000 000 elemments");
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Time of sort" + algorithmName[i] + sortTimeForMillion[i] + " nano second." );
+        }
+        System.out.println("Binary search find random value in time " + timeOfBinarySearch[2]);
+        System.out.println("Linear search find random value in time " + timeOfLinearSearch[2]);
 
     }
 
